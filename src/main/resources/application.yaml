@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: spring-boot-jwt-starter
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      pool-name: HikariCP
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+cloudinary:
+  cloud_name: ${CLOUD_NAME}
+  api_key: ${CLOUD_API_KEY}
+  api_secret: ${CLOUD_API_SECRET}
+
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+    com.digiHR: DEBUG
+  file:
+    path: logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+jwt:
+  secret: "NMAFXibzdw1VMa52BXpMfEY5zxoA1pKUZN0jzSYKEkkNMAfEibzdw1VMa52BXpMfEY5zxoA1pKUZN0jzSYKEkk"
+  expiration: 864000000
+  refresh-token-expiration: 864000000
